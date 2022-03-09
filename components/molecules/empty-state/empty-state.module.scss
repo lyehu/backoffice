@@ -1,0 +1,27 @@
+@import "../../../styles/breakpoints.scss";
+
+.container {
+  margin: 0 auto;
+  max-width: 75%;
+  padding-top: 18vh;
+  text-align: center;
+
+  @media (min-width: $breakpoint-laptop) {
+    max-width: 65vh;
+    padding-top: var(--spacing__vertical-7);
+  }
+
+  @media (min-width: $breakpoint-large-screen) {
+    padding-top: var(--spacing__vertical-11);
+  }
+}
+
+.imageContainer,
+.title {
+  margin-bottom: var(--spacing__vertical-1);
+}
+
+.text {
+  color: var(--color__grey-dark);
+  margin-bottom: var(--spacing__vertical-2);
+}

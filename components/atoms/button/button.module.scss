@@ -1,0 +1,23 @@
+.button {
+  border-radius: 20px;
+  display: inline-block;
+  font-family: var(--typography__font-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem 2.5rem;
+
+  &:not(.disabled) {
+    box-shadow: var(--shadow__small);
+  }
+}
+
+.contained {
+  border: none;
+}
+
+.primary {
+  &.contained {
+    background-color: var(--color__primary-medium);
+    color: var(--color__grey-lightest);
+  }
+}

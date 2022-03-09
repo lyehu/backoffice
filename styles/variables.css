@@ -1,0 +1,39 @@
+:root {
+  --typography__font-primary: "Roboto";
+
+  --color__primary-lightest: #dbdefb;
+  --color__primary-medium: #5e70fa;
+  --color__primary-dark: #334bff;
+  --color__grey-lightest: #fcfcfd;
+  --color__grey-light: #f5f6fa;
+  --color__grey-light-medium: #edeef2;
+  --color__grey-medium: #c8c9d0;
+  --color__grey-medium-dark: #acaeb9;
+  --color__grey-dark: #61626b;
+  --color__grey-darkest: #3c3c3e;
+
+  --shadow__large: 2px 2px 100px 2px rgba(0, 0, 0, 0.05);
+  --shadow__small: 0px 1px 4px 1px rgba(0, 0, 0, 0.1),
+    1px 3px 12px rgba(5, 5, 5, 0.2);
+  --shadow__overlay: 2px -2px 100px 2px rgba(0, 0, 0, 0.15);
+
+  --spacing__rhythm-unit: 0.6875rem;
+  --spacing__vertical-1: var(--spacing__rhythm-unit);
+  --spacing__vertical-2: calc(2 * var(--spacing__rhythm-unit));
+  --spacing__vertical-3: calc(3 * var(--spacing__rhythm-unit));
+  --spacing__vertical-4: calc(4 * var(--spacing__rhythm-unit));
+  --spacing__vertical-5: calc(5 * var(--spacing__rhythm-unit));
+  --spacing__vertical-6: calc(6 * var(--spacing__rhythm-unit));
+  --spacing__vertical-7: calc(7 * var(--spacing__rhythm-unit));
+  --spacing__vertical-8: calc(8 * var(--spacing__rhythm-unit));
+  --spacing__vertical-9: calc(9 * var(--spacing__rhythm-unit));
+  --spacing__vertical-10: calc(10 * var(--spacing__rhythm-unit));
+  --spacing__vertical-11: calc(11 * var(--spacing__rhythm-unit));
+  --spacing__vertical-12: calc(12 * var(--spacing__rhythm-unit));
+}
+
+@media screen and (min-width: 48em) {
+  :root {
+    --spacing__rhythm-unit: 0.875rem;
+  }
+}

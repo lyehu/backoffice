@@ -1,1 +1,1 @@
-export { Text } from "./component";
+export { Text, Styles as TextVariants, TextBaseProps } from "./component";

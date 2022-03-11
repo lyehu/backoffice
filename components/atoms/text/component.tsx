@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 import styles from "./text.module.scss";
 
-enum Styles {
+export enum Styles {
   ExtraSmall,
   Small,
   Medium,
@@ -10,13 +10,16 @@ enum Styles {
   Heading,
 }
 
-type TextProps = {
-  children: ReactNode;
+export type TextBaseProps = {
   variant: Styles;
   component?: keyof JSX.IntrinsicElements;
   className?: string;
   bold?: boolean;
 };
+
+type TextProps = {
+  children: ReactNode;
+} & TextBaseProps;
 
 export const Text = ({
   variant,

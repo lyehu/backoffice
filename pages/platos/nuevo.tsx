@@ -1,19 +1,16 @@
 import type { NextPage } from "next";
-import { Button } from "../../components/atoms/button/component";
-import { EmptyState } from "../../components/molecules/empty-state/component";
-import { ListLayout } from "../../components/systems/layout-list";
+import { Page } from "../../components/molecules/page/component";
+import { FullWidthLayout } from "../../components/molecules/layouts/full-width/component";
 
-const newDish = {
+const newDishPage = new Page({
   metaTitle: "Restoffice - Nuevo plato",
   title: "Añadir plato",
-};
+  children: <div>asd</div>,
+  template: FullWidthLayout,
+});
 
 const Dishes: NextPage = () => {
-  return (
-    <ListLayout {...newDish}>
-      <div>asd</div>
-    </ListLayout>
-  );
+  return newDishPage.render();
 };
 
 export default Dishes;

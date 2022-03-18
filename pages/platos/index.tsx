@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { Button } from "../../components/atoms/button/component";
 import { EmptyState } from "../../components/molecules/empty-state/component";
 import { Page } from "../../components/molecules/page/component";
-import { FullWidthLayout } from "../../components/molecules/layouts/full-width/component";
+import { Layouts } from "../../components/molecules/layouts/";
 
 const emptyDishes = {
   image: {
@@ -25,7 +25,7 @@ const DishesPage = new Page({
   title: "Platos",
   metaTitle: "Restoffice - Platos",
   children: <EmptyState {...emptyDishes} />,
-  template: FullWidthLayout,
+  layout: Layouts.container,
 });
 
 const Dishes: NextPage = () => {

@@ -1,43 +1,44 @@
 import Head from "next/head";
 import { ReactNode } from "react";
-import { Text } from "../../atoms/text/component";
-import { Layout } from "../layouts";
-import styles from "../layouts/full-width/styles.module.scss";
+import { ContainerLayoutProps } from "../layouts/container";
 
 export class Page {
   metaTitle: string;
   title: string;
-  template: Layout;
+  layout: (props: ContainerLayoutProps) => JSX.Element;
   children: ReactNode;
 
   constructor({
     metaTitle,
     title,
-    template,
+    layout,
     children,
   }: {
     metaTitle: string;
     title: string;
-    template: Layout;
+    layout: (props: ContainerLayoutProps) => JSX.Element;
     children: ReactNode;
   }) {
     this.metaTitle = metaTitle;
     this.title = title;
-    this.template = template;
+    this.layout = layout;
     this.children = children;
   }
 
   render() {
+    const Layout = this.layout;
+    const layoutProps = {
+      title: this.title,
+      children: this.children,
+    };
+
     return (
-      <div className={styles[this.template.styles.containerClassName]}>
+      <>
         <Head>
           <title>{this.metaTitle}</title>
         </Head>
-        <Text component="h1" variant={this.template.styles.title.variant}>
-          {this.title}
-        </Text>
-        {this.children}
-      </div>
+        <Layout {...layoutProps} />
+      </>
     );
   }
 }

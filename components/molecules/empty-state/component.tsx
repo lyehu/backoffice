@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Button, ButtonProps } from "../../atoms/button/component";
-import { StyledLink } from "../../atoms/button/link";
 import { Text } from "../../atoms/text/component";
 import styles from "./empty-state.module.scss";
 

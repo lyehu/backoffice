@@ -1,0 +1,57 @@
+@import "../../../../styles/breakpoints.scss";
+
+.wrapper {
+  background: var(--color__grey-light);
+  height: 100vh;
+  padding-top: var(--spacing__vertical-3);
+  padding-bottom: var(--spacing__vertical-3);
+
+  @media (min-width: $breakpoint-laptop) {
+    padding-top: var(--spacing__vertical-5);
+    padding-bottom: var(--spacing__vertical-5);
+  }
+}
+
+.container {
+  padding-left: var(--spacing__vertical-2);
+  padding-right: var(--spacing__vertical-2);
+
+  @media (min-width: $breakpoint-laptop) {
+    padding-left: var(--spacing__vertical-11);
+    padding-right: var(--spacing__vertical-11);
+  }
+}
+
+.header {
+  margin-bottom: var(--spacing__vertical-3);
+
+  @media (min-width: $breakpoint-laptop) {
+    margin-bottom: var(--spacing__vertical-4);
+  }
+}
+
+.containerWithSections {
+  @media (min-width: $breakpoint-laptop) {
+    padding-left: var(--spacing__vertical-11);
+    padding-right: var(--spacing__vertical-11);
+  }
+}
+
+.grid {
+  display: grid;
+
+  @media (min-width: $breakpoint-laptop) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.section {
+  background: var(--color__grey-lightest);
+  border-radius: var(--border-radius__medium);
+  padding: var(--spacing__vertical-3) var(--spacing__vertical-2);
+
+  @media (min-width: $breakpoint-laptop) {
+    padding: var(--spacing__vertical-4) var(--spacing__vertical-6)
+      var(--spacing__vertical-5);
+  }
+}

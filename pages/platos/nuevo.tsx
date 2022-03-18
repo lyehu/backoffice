@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import { Page } from "../../components/molecules/page/component";
-import { FullWidthLayout } from "../../components/molecules/layouts/full-width/component";
+import { Layouts } from "../../components/molecules/layouts";
 
 const newDishPage = new Page({
   metaTitle: "Restoffice - Nuevo plato",
   title: "Añadir plato",
   children: <div>asd</div>,
-  template: FullWidthLayout,
+  layout: Layouts.form,
 });
 
 const Dishes: NextPage = () => {

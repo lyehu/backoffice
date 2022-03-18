@@ -17,6 +17,9 @@
     1px 3px 12px rgba(5, 5, 5, 0.2);
   --shadow__overlay: 2px -2px 100px 2px rgba(0, 0, 0, 0.15);
 
+  --border-radius__medium: 30px;
+  --border-radius__small: 8px;
+
   --spacing__rhythm-unit: 0.6875rem;
   --spacing__vertical-1: var(--spacing__rhythm-unit);
   --spacing__vertical-2: calc(2 * var(--spacing__rhythm-unit));

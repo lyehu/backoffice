@@ -6,7 +6,7 @@ export enum Sizes {
   Medium,
 }
 
-interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
   size?: Sizes;
   className?: string;
 }

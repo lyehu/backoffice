@@ -1,0 +1,41 @@
+@import "../../../../styles/breakpoints.scss";
+
+.containerWithSections {
+  @media (min-width: $breakpoint-laptop) {
+    padding-left: var(--spacing__vertical-11);
+    padding-right: var(--spacing__vertical-11);
+  }
+}
+
+.grid {
+  display: grid;
+
+  @media (min-width: $breakpoint-laptop) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.section {
+  background: var(--color__grey-lightest);
+  border-radius: var(--border-radius__medium);
+  padding: var(--spacing__vertical-3) var(--spacing__vertical-2);
+
+  @media (min-width: $breakpoint-laptop) {
+    padding: var(--spacing__vertical-4) var(--spacing__vertical-6)
+      var(--spacing__vertical-5);
+  }
+}
+
+.sectionTitle {
+  margin-bottom: var(--spacing__vertical-2);
+}
+
+.formGroup {
+  margin-bottom: var(--spacing__vertical-2);
+}
+
+.row {
+  display: grid;
+  grid-gap: var(--spacing__vertical-1);
+  grid-template-columns: 1fr 1fr;
+}

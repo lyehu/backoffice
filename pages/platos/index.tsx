@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import { Button } from "../../components/atoms/button/component";
-import { EmptyState } from "../../components/molecules/empty-state/component";
-import { Page } from "../../components/molecules/page/component";
-import { Layouts } from "../../components/molecules/layouts/";
+import { Button } from "../../lib/ui/atoms/button/component";
+import { EmptyState } from "../../lib/ui/molecules/empty-state/component";
+import { Page } from "../../lib/ui/molecules/page/component";
+import { Layouts } from "../../lib/ui/molecules/layouts";
 
 const emptyDishes = {
   image: {

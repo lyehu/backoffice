@@ -1,16 +1,18 @@
 import type { NextPage } from "next";
-import { Page } from "../../components/molecules/page/component";
-import { Layouts } from "../../components/molecules/layouts";
+import { Page } from "../../lib/ui/molecules/page/component";
+import { Layouts } from "../../lib/ui/molecules/layouts";
+import { DishesModule } from "../../app/modules/dishes/dishes.module";
+import { NewDishForm } from "../../app/modules/dishes/presentation/new-dish.component";
 
 const newDishPage = new Page({
   metaTitle: "Restoffice - Nuevo plato",
   title: "Añadir plato",
-  children: <div>asd</div>,
+  children: <NewDishForm />,
   layout: Layouts.form,
 });
 
-const Dishes: NextPage = () => {
-  return newDishPage.render();
+const NewDish: NextPage = () => {
+  return <DishesModule>{newDishPage.render()}</DishesModule>;
 };
 
-export default Dishes;
+export default NewDish;

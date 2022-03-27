@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactNode } from "react";
+import { ElementType, ReactNode } from "react";
 import styles from "./text.module.scss";
 
 export enum Styles {
@@ -12,7 +12,7 @@ export enum Styles {
 
 export type TextBaseProps = {
   variant: Styles;
-  component?: keyof JSX.IntrinsicElements;
+  component?: ElementType;
   className?: string;
   bold?: boolean;
 };
@@ -27,6 +27,7 @@ export const Text = ({
   className,
   bold,
   children,
+  ...other
 }: TextProps) => {
   const classNameMap = classNames(
     styles.text,
@@ -43,7 +44,11 @@ export const Text = ({
 
   const HtmlTag = component;
 
-  return <HtmlTag className={classNameMap}>{children}</HtmlTag>;
+  return (
+    <HtmlTag className={classNameMap} {...other}>
+      {children}
+    </HtmlTag>
+  );
 };
 
 Text.Variant = Styles;

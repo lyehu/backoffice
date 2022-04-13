@@ -1,0 +1,25 @@
+@import "../../../../styles/breakpoints.scss";
+
+.bar {
+  justify-content: space-between;
+  background-color: var(--color__grey-lightest);
+  display: grid;
+  grid-template-columns: auto auto;
+  padding-top: var(--spacing__vertical-2);
+  padding-bottom: var(--spacing__vertical-2);
+
+  @media (min-width: $breakpoint-laptop) {
+    justify-content: end;
+    grid-gap: var(--spacing__vertical-1);
+  }
+}
+
+.container {
+  padding-left: var(--spacing__vertical-2);
+  padding-right: var(--spacing__vertical-2);
+
+  @media (min-width: $breakpoint-laptop) {
+    padding-left: var(--spacing__vertical-11);
+    padding-right: var(--spacing__vertical-11);
+  }
+}

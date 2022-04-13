@@ -1,24 +1,26 @@
-export class DishDTO {
-  private constructor(
-    public allergens: string,
-    public category: number,
-    public imageUrl: string,
-    public ingredients: string,
-    public name: string,
-    public number: string,
-    public price: number
-  ) {}
+import { Dish } from "./dish";
 
-  static create(
-    allergens: string,
-    category: number,
-    imageUrl: string,
-    ingredients: string,
-    name: string,
-    number: string,
-    price: number
-  ) {
-    return new DishDTO(
+export interface DishProps {
+  allergens: string;
+  category: number;
+  imageUrl: string;
+  ingredients: string;
+  name: string;
+  number: string;
+  price: number;
+}
+
+export class DishDTO {
+  static fromJSON = ({
+    allergens,
+    category,
+    imageUrl,
+    ingredients,
+    name,
+    number,
+    price,
+  }: DishProps): Dish => {
+    return Dish.create(
       allergens,
       category,
       imageUrl,
@@ -27,15 +29,15 @@ export class DishDTO {
       number,
       price
     );
-  }
+  };
 
-  public toJSON(): any {
+  static toJSON = (dish: Dish): any => {
     return {
-      allergens: this.allergens,
-      imageUrl: this.imageUrl,
-      ingredients: this.ingredients,
-      name: this.name,
-      price: this.price,
+      allergens: dish.allergens,
+      imageUrl: dish.imageUrl,
+      ingredients: dish.ingredients,
+      name: dish.name,
+      price: dish.price,
     };
-  }
+  };
 }

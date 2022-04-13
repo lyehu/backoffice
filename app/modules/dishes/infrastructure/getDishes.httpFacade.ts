@@ -1,9 +1,9 @@
 import { HttpFacade } from "../../../../lib/core";
 import { CustomHttpService } from "../../../../lib/infrastructure/http";
-import { DishDTO } from "../domain/dish.dto";
 
 import { Service } from "react-service-locator";
 import { FIREBASE_CONFIG } from "../../../config";
+import { DishDTO } from "../domain/dish.dto";
 
 @Service()
 export class GetDishesHttpFacade implements HttpFacade<void, DishDTO[]> {

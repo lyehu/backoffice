@@ -6,8 +6,8 @@
   font-weight: 500;
   padding: 1rem 2.5rem;
 
-  &:not(.disabled) {
-    box-shadow: var(--shadow__small);
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -19,5 +19,23 @@
   &.contained {
     background-color: var(--color__primary-medium);
     color: var(--color__grey-lightest);
+
+    &:not(.disabled) {
+      box-shadow: var(--shadow__small);
+    }
+  }
+
+  &.outlined {
+    background-color: var(--color__grey-lightest);
+    color: var(--color__primary-medium);
+    border: solid 1px var(--color__grey-medium);
+  }
+
+  &.disabled {
+    background-color: var(--color__grey-medium);
+
+    &:hover {
+      cursor: default;
+    }
   }
 }

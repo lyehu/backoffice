@@ -1,21 +1,22 @@
 import { HttpFacade } from "../../../../lib/core";
 import { CustomHttpService } from "../../../../lib/infrastructure/http";
-import { DishDTO } from "../domain/dish.dto";
+import { Dish } from "../domain/dish";
 
 import { Service } from "react-service-locator";
 import { FIREBASE_CONFIG } from "../../../config";
+import { DishDTO } from "../domain/dish.dto";
 
 @Service()
-export class CreateDishHttpFacade implements HttpFacade<DishDTO, string> {
+export class CreateDishHttpFacade implements HttpFacade<Dish, string> {
   constructor(private readonly httpService: CustomHttpService) {
     httpService.init(FIREBASE_CONFIG);
   }
 
-  async execute(data: DishDTO): Promise<any> {
+  async execute(data: Dish): Promise<any> {
     try {
       return await this.httpService.post(
         `/restaurants/8zSuQV3YmUJrfTsnzlri/categories/XN8PUKjEYNK94OsPXQHr/dishes`,
-        data.toJSON()
+        DishDTO.toJSON(data)
       );
     } catch (e) {}
   }

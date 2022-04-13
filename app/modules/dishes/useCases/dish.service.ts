@@ -1,5 +1,6 @@
 import { Service } from "react-service-locator";
-import { DishDTO } from "../domain/dish.dto";
+import { Dish } from "../domain/dish";
+import { DishProps } from "../domain/dish.dto";
 import { CreateDishHttpFacade } from "../infrastructure/createDish.httpFacade";
 import { GetDishesHttpFacade } from "../infrastructure/getDishes.httpFacade";
 
@@ -10,7 +11,7 @@ export class DishService {
     private getDishesFacade: GetDishesHttpFacade
   ) {}
 
-  async create({
+  async add({
     allergens,
     category,
     imageUrl,
@@ -18,17 +19,9 @@ export class DishService {
     name,
     number,
     price,
-  }: {
-    allergens: string;
-    category: number;
-    imageUrl: string;
-    ingredients: string;
-    name: string;
-    number: string;
-    price: number;
-  }) {
+  }: DishProps) {
     try {
-      const dish = DishDTO.create(
+      const dish = Dish.create(
         allergens,
         category,
         imageUrl,

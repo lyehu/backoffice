@@ -11,16 +11,17 @@
   display: grid;
 
   @media (min-width: $breakpoint-laptop) {
+    grid-gap: var(--spacing__vertical-2);
     grid-template-columns: 2fr 1fr;
   }
 }
 
 .section {
   background: var(--color__grey-lightest);
-  border-radius: var(--border-radius__medium);
   padding: var(--spacing__vertical-3) var(--spacing__vertical-2);
 
   @media (min-width: $breakpoint-laptop) {
+    border-radius: var(--border-radius__medium);
     padding: var(--spacing__vertical-4) var(--spacing__vertical-6)
       var(--spacing__vertical-5);
   }
@@ -37,5 +38,11 @@
 .row {
   display: grid;
   grid-gap: var(--spacing__vertical-1);
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }

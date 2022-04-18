@@ -1,0 +1,34 @@
+.input {
+  display: none;
+}
+
+.button {
+  border: none;
+  border-radius: var(--border-radius__medium);
+  display: inline-block;
+  font-family: var(--typography__font-primary);
+  font-size: 1rem;
+  padding: 11px 25px;
+  transition: all 0.4s ease;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.primary {
+    background: var(--color__primary-medium);
+    border: solid 1px var(--color__primary-medium);
+    color: var(--color__grey-lightest);
+  }
+
+  &.secondary {
+    background: var(--color__grey-lightest);
+    border: solid 1px var(--color__grey-dark);
+  }
+
+  &.new {
+    background: var(--color__grey-lightest);
+    border: dashed 1px var(--color__grey-medium-dark);
+    color: var(--color__grey-dark);
+  }
+}

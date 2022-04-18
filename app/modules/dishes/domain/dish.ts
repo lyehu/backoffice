@@ -1,7 +1,7 @@
 export class Dish {
   private constructor(
     public readonly allergens: string,
-    public readonly category: number,
+    public readonly category: string,
     public readonly imageUrl: string,
     public readonly ingredients: string,
     public readonly name: string,
@@ -11,7 +11,7 @@ export class Dish {
 
   static create = (
     allergens: string,
-    category: number,
+    category: string,
     imageUrl: string,
     ingredients: string,
     name: string,
@@ -30,6 +30,6 @@ export class Dish {
   };
 
   static empty = () => {
-    return new Dish("", 0, "", "", "", "", 0);
+    return new Dish("", "", "", "", "", "", 0);
   };
 }

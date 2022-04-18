@@ -1,0 +1,6 @@
+.pill {
+  &:not(:last-child) {
+    margin-bottom: var(--spacing__vertical-1);
+    margin-right: var(--spacing__vertical-1);
+  }
+}

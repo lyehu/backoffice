@@ -2,7 +2,7 @@ import { Dish } from "./dish";
 
 export interface DishProps {
   allergens: string;
-  category: number;
+  category: string;
   imageUrl: string;
   ingredients: string;
   name: string;

@@ -1,23 +1,24 @@
 import classNames from "classnames";
-import { InputText, InputTextProps } from "../../atoms/input-text/component";
 import { Text } from "../../atoms/text/component";
 import styles from "./styles.module.scss";
 
-type FormGroupProps = {
+interface FormGroupProps {
   className?: string;
   label: string;
-  input: InputTextProps;
-};
+  children: JSX.Element;
+}
 
-export const FormGroup = ({ className, label, input }: FormGroupProps) => (
-  <div className={classNames(styles.formGroup, className)}>
-    <Text
-      variant={Text.Variant.Small}
-      component="label"
-      className={styles.label}
-    >
-      {label}
-    </Text>
-    <InputText {...input} />
-  </div>
-);
+export const FormGroup = ({ className, label, children }: FormGroupProps) => {
+  return (
+    <div className={classNames(styles.formGroup, className)}>
+      <Text
+        variant={Text.Variant.Small}
+        component="label"
+        className={styles.label}
+      >
+        {label}
+      </Text>
+      {children}
+    </div>
+  );
+};

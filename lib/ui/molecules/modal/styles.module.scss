@@ -1,0 +1,26 @@
+@import "~styles/breakpoints.scss";
+
+.overlay {
+    background: rgba(55, 55, 57, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    place-items: center;
+    overflow-y: auto;
+  }
+  
+  .content {
+    background: var(--color__grey-lightest);
+    display: flex;
+    flex-direction: column;
+    max-width: 580px;
+    padding: var(--spacing__vertical-4) var(--spacing__vertical-2);
+    border-radius: var(--border-radius__medium);
+
+    @media (min-width: $breakpoint-laptop) {
+      padding: var(--spacing__vertical-2) var(--spacing__vertical-4);
+    }
+  }

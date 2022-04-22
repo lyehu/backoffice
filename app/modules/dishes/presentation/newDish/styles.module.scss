@@ -1,4 +1,4 @@
-@import "../../../../styles/breakpoints.scss";
+@import "~styles/breakpoints.scss";
 
 .containerWithSections {
   @media (min-width: $breakpoint-laptop) {
@@ -46,3 +46,4 @@
   position: absolute;
   width: 100%;
 }
+

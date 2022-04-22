@@ -1,10 +1,18 @@
+import {
+  Button,
+  FormGroup,
+  FormNavigationBar,
+  InputText,
+  ModalTrigger,
+  ModalWrapper,
+  RadioGroup,
+  Text,
+} from "@/ui";
 import { useState } from "react";
 import { useService } from "react-service-locator";
-import { Button, Text, FormGroup, FormNavigationBar } from "../../../../lib/ui";
-import { InputText } from "../../../../lib/ui/atoms/input-text/component";
-import { RadioGroup } from "../../../../lib/ui/molecules/radio-group/component";
-import { DishProps } from "../domain/dish.dto";
-import { DishService } from "../useCases/dish.service";
+import { DishProps } from "../../domain/dish.dto";
+import { DishService } from "../../useCases/dish.service";
+import { CategoryModal } from "./category-modal/category-modal.component";
 import styles from "./styles.module.scss";
 
 export const NewDishForm = () => {
@@ -114,6 +122,10 @@ export const NewDishForm = () => {
           </div>
         </div>
       </div>
+      <ModalWrapper>
+        <ModalTrigger>Modal trigger</ModalTrigger>
+        <CategoryModal />
+      </ModalWrapper>
       <FormNavigationBar buttons={buttons} className={styles.footer} />
     </>
   );

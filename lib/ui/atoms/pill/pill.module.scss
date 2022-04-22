@@ -5,6 +5,7 @@
 .button {
   border: none;
   border-radius: var(--border-radius__medium);
+  color: var(--color__grey-darkest);
   display: inline-block;
   font-family: var(--typography__font-primary);
   font-size: 1rem;
@@ -24,6 +25,11 @@
   &.secondary {
     background: var(--color__grey-lightest);
     border: solid 1px var(--color__grey-dark);
+
+    &:hover {
+      background: var(--color__grey-dark);
+      color: var(--color__grey-lightest);
+    }
   }
 
   &.new {

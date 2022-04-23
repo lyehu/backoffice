@@ -1,26 +1,87 @@
 @import "~styles/breakpoints.scss";
 
 .overlay {
-    background: rgba(55, 55, 57, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: grid;
-    place-items: center;
-    overflow-y: auto;
-  }
-  
-  .content {
-    background: var(--color__grey-lightest);
-    display: flex;
-    flex-direction: column;
-    max-width: 580px;
-    padding: var(--spacing__vertical-4) var(--spacing__vertical-2);
-    border-radius: var(--border-radius__medium);
+  background: rgba(55, 55, 57, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+}
 
-    @media (min-width: $breakpoint-laptop) {
-      padding: var(--spacing__vertical-2) var(--spacing__vertical-4);
-    }
+.content {
+  background: var(--color__grey-lightest);
+  border-top-left-radius: var(--border-radius__medium);
+  border-top-right-radius: var(--border-radius__medium);
+  display: flex;
+  flex-direction: column;
+  max-width: 580px;
+  padding: var(--spacing__vertical-4) var(--spacing__vertical-2) var(--spacing__vertical-6);
+
+  position: fixed;
+  bottom: 0;
+
+  @media (min-width: $breakpoint-laptop) {
+    border-bottom-left-radius: var(--border-radius__medium);
+    border-bottom-right-radius: var(--border-radius__medium);
+    padding: var(--spacing__vertical-6) var(--spacing__vertical-5);
+    position: relative;
   }
+}
+
+.buttonClose {
+  background: none;
+  border: none;
+  padding: var(--spacing__vertical-1);
+  position: absolute;
+  right: var(--spacing__vertical-2);
+  top: var(--spacing__vertical-2);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (min-width: $breakpoint-laptop) {
+    right: var(--spacing__vertical-3);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.overlay[data-state='open'],
+.content[data-state='open'] {
+  animation: fadeIn 200ms ease-out forwards;
+}
+
+.overlay[data-state='closed'],
+.content[data-state='closed'] {
+  animation: fadeOut 200ms ease-in forwards;
+}

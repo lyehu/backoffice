@@ -1,8 +1,5 @@
 import classNames from "classnames";
-import { ReactNode, useEffect } from "react";
-import { useService } from "react-service-locator";
-import { DishService } from "../../../../../app/modules/dishes/useCases/dish.service";
-import { InputText } from "../../../atoms/input-text/component";
+import { ReactNode } from "react";
 import { Text } from "../../../atoms/text/component";
 import styles from "./styles.module.scss";
 
@@ -12,16 +9,7 @@ export interface Props {
 }
 
 export const WidgetContainerLayout = (props: Props) => {
-  const dishService = useService(DishService);
   const { title, children } = props;
-
-  useEffect(() => {
-    test();
-  }, []);
-
-  const test = async () => {
-    const result = await dishService.getAll();
-  };
 
   return (
     <div className={styles.wrapper}>

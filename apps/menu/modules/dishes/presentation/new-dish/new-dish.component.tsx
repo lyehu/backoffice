@@ -3,8 +3,6 @@ import {
   FormGroup,
   FormNavigationBar,
   InputText,
-  ModalTrigger,
-  ModalWrapper,
   RadioGroup,
   Text,
 } from "@/ui";
@@ -12,7 +10,6 @@ import { useState } from "react";
 import { useService } from "react-service-locator";
 import { DishProps } from "../../domain/dish.dto";
 import { DishService } from "../../useCases/dish.service";
-import { CategoryModal } from "./category-modal/category-modal.component";
 import styles from "./styles.module.scss";
 
 export const NewDishForm = () => {
@@ -112,20 +109,12 @@ export const NewDishForm = () => {
                     value: "main",
                   },
                 ]}
-                addOptionButton={{
-                  label: "+Nueva categoría",
-                  onClick: () => {},
-                }}
                 onChange={handleCategory}
               />
             </FormGroup>
           </div>
         </div>
       </div>
-      <ModalWrapper>
-        <ModalTrigger>Modal trigger</ModalTrigger>
-        <CategoryModal />
-      </ModalWrapper>
       <FormNavigationBar buttons={buttons} className={styles.footer} />
     </>
   );

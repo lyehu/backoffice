@@ -17,7 +17,7 @@ export type IPillButton = {
   label: string;
   name?: never;
   neutral: boolean;
-  onClick: ChangeEventHandler;
+  onClick?: ChangeEventHandler;
   onChange?: never;
   selected?: never;
   value?: never;

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, MouseEventHandler } from "react";
 import styles from "./pill.module.scss";
 
 export type IPillRadio = {
@@ -17,7 +17,7 @@ export type IPillButton = {
   label: string;
   name?: never;
   neutral: boolean;
-  onClick?: ChangeEventHandler;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   onChange?: never;
   selected?: never;
   value?: never;
@@ -27,7 +27,7 @@ export type IPill = { className?: string } & (IPillRadio | IPillButton);
 
 export const Pill = (pill: IPill) => {
   return pill.neutral ? (
-    <button id={pill.id} className={classNames(styles.button, styles.new)}>
+    <button className={classNames(styles.button, styles.new)} {...pill}>
       {pill.label}
     </button>
   ) : (

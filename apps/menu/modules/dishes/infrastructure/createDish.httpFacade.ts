@@ -1,6 +1,6 @@
+import { HttpFacade } from "@/core";
+import { CustomHttpService } from "@/infrastructure";
 import { Service } from "react-service-locator";
-import { HttpFacade } from "../../../../../lib/core";
-import { CustomHttpService } from "../../../../../lib/infrastructure/http";
 import { FIREBASE_CONFIG } from "../../../../config";
 import { Dish } from "../domain/dish";
 import { DishDTO } from "../domain/dish.dto";

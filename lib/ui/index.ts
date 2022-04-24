@@ -5,7 +5,7 @@ import { Pill } from "./atoms/pill";
 import { Text } from "./atoms/text";
 import { FormGroup } from "./molecules/form-group";
 import { FormNavigationBar } from "./molecules/form-navigation-bar";
-import { ModalContent, ModalTrigger, ModalWrapper } from "./molecules/modal";
+import { Modal } from "./molecules/modal";
 import { RadioGroup } from "./molecules/radio-group/component";
 
 export {
@@ -13,9 +13,7 @@ export {
   Text,
   FormGroup,
   FormNavigationBar,
-  ModalWrapper,
-  ModalContent,
-  ModalTrigger,
+  Modal,
   InputText,
   RadioGroup,
   Icon,

@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useState } from "react";
-import { IPillRadio, Pill } from "../../atoms/pill/component";
+import { IPillRadio, Pill } from "../../atoms/pill";
 import styles from "./styles.module.scss";
 
 interface Option {

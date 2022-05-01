@@ -4,11 +4,13 @@ import {
   FormGroup,
   FormNavigationBar,
   InputText,
+  Option,
   RadioGroup,
   Text,
 } from "@/ui";
 import { CategoryModal } from "apps/menu/modules/categories/presentation/category-modal/category-modal.component";
-import { useState } from "react";
+import { CategoryService } from "apps/menu/modules/categories/useCases/category.service";
+import { useEffect, useState } from "react";
 import { useService } from "react-service-locator";
 import { DishProps } from "../../domain/dish.dto";
 import { DishService } from "../../useCases/dish.service";
@@ -17,6 +19,8 @@ import styles from "./styles.module.scss";
 export const NewDishForm = () => {
   const messageService = useService(MessageService);
   const dishService = useService(DishService);
+  const categoryService = useService(CategoryService);
+  const [categoryOptions, setCategoryOptions] = useState<Option[]>([]);
   const [dish, setDish] = useState<DishProps>({
     allergens: "",
     category: "",
@@ -26,6 +30,10 @@ export const NewDishForm = () => {
     number: "",
     price: 0,
   });
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const onInputChange = (
     name: string,
@@ -55,10 +63,18 @@ export const NewDishForm = () => {
 
   const handleCategory = (value: string) => {
     setDish((dish) => ({ ...dish, category: value }));
+    toggleModal();
+    getCategories();
   };
 
-  const triggerModal = () => {
-    messageService.sendMessage("open");
+  const toggleModal = () => {
+    // messageService.sendMessage("open");
+  };
+
+  const getCategories = async () => {
+    const result = await categoryService.getAll();
+    const options = result.map((category) => category.toOption());
+    setCategoryOptions(options);
   };
 
   return (
@@ -104,22 +120,11 @@ export const NewDishForm = () => {
             <FormGroup className={styles.formGroup} label="Categoría">
               <RadioGroup
                 name="string"
-                options={[
-                  {
-                    id: "starters",
-                    label: "Entrantes",
-                    value: "starters",
-                  },
-                  {
-                    id: "main",
-                    label: "Plato principal",
-                    value: "main",
-                  },
-                ]}
+                options={categoryOptions}
                 onChange={handleCategory}
                 addOptionButton={{
                   label: "Nueva categoría",
-                  onClick: triggerModal,
+                  onClick: toggleModal,
                 }}
               />
             </FormGroup>

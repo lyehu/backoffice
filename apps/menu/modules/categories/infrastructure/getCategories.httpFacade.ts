@@ -3,6 +3,7 @@ import { HttpFacade } from "lib/core";
 import { Service } from "react-service-locator";
 import { FIREBASE_CONFIG } from "../../../../config";
 import { Category } from "../domain/category";
+import { CategoryDbProps, CategoryDTO } from "../domain/category.dto";
 
 @Service()
 export class GetCategoriesHttpFacade implements HttpFacade<void, Category[]> {
@@ -12,9 +13,10 @@ export class GetCategoriesHttpFacade implements HttpFacade<void, Category[]> {
 
   async execute(): Promise<Category[]> {
     try {
-      return await this.httpService.get(
+      const categories: CategoryDbProps[] = await this.httpService.get(
         `/restaurants/8zSuQV3YmUJrfTsnzlri/categories`
       );
+      return categories.map(CategoryDTO.fromJSON);
     } catch (e) {}
     return [];
   }

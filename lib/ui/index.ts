@@ -6,7 +6,8 @@ import { Text } from "./atoms/text";
 import { FormGroup } from "./molecules/form-group";
 import { FormNavigationBar } from "./molecules/form-navigation-bar";
 import { Modal } from "./molecules/modal";
-import { RadioGroup } from "./molecules/radio-group/component";
+import type { Option } from "./molecules/radio-group";
+import { RadioGroup } from "./molecules/radio-group";
 
 export {
   Button,
@@ -16,6 +17,7 @@ export {
   Modal,
   InputText,
   RadioGroup,
+  Option,
   Icon,
   Pill,
 };

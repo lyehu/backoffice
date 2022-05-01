@@ -3,8 +3,8 @@ import {
   addDoc,
   collection,
   Firestore,
-  getFirestore,
   getDocs,
+  getFirestore,
 } from "firebase/firestore";
 import { Service } from "react-service-locator";
 import { CustomHttpService } from "./http";
@@ -23,7 +23,7 @@ export class FirebaseService implements CustomHttpService {
     let result: any[] = [];
     const querySnapshot = await getDocs(collection(FirebaseService.db, url));
     querySnapshot.forEach((doc) => {
-      result.push(doc.data());
+      result.push({ ...doc.data(), id: doc.id });
     });
 
     return Promise.resolve(result);

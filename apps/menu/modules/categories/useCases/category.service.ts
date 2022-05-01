@@ -1,6 +1,4 @@
 import { Service } from "react-service-locator";
-import { Category } from "../domain/category";
-import { CategoryProps } from "../domain/category.dto";
 import { CreateCategoryHttpFacade } from "../infrastructure/createCategory.httpFacade";
 import { GetCategoriesHttpFacade } from "../infrastructure/getCategories.httpFacade";
 
@@ -11,10 +9,12 @@ export class CategoryService {
     private getCategoriesFacade: GetCategoriesHttpFacade
   ) {}
 
-  async add({ name, nameEnglish }: CategoryProps) {
+  async add(name: string) {
     try {
-      const category = Category.create(name, nameEnglish);
-      this.createCategoryFacade.execute(category);
+      const categories = await this.getAll();
+      const position = categories.length;
+
+      this.createCategoryFacade.execute({ name, position });
     } catch (e) {
       console.log(e);
     }

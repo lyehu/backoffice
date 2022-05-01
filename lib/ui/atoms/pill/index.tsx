@@ -27,7 +27,10 @@ export type IPill = { className?: string } & (IPillRadio | IPillButton);
 
 export const Pill = (pill: IPill) => {
   return pill.neutral ? (
-    <button className={classNames(styles.button, styles.new)} {...pill}>
+    <button
+      className={classNames(styles.button, styles.new)}
+      onClick={pill.onClick}
+    >
       {pill.label}
     </button>
   ) : (

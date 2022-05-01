@@ -18,7 +18,7 @@ export const CategoryModal = () => {
 
   const onSubmit: MouseEventHandler<HTMLButtonElement> = () => {
     if (name) {
-      categoryService.add({ name, nameEnglish: "" });
+      categoryService.add(name);
     }
   };
 

@@ -4,7 +4,7 @@ import { Subject } from "rxjs";
 @Service()
 export class MessageService {
   public state$ = new Subject();
-  public sendMessage = (message: string) => {
+  public openModal = (message: string) => {
     this.state$.next(message);
   };
   public clearMessages = () => this.state$.next("");

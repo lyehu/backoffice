@@ -1,2 +1,2 @@
-export { MessageService } from "../ui/molecules/modal/modal.service";
+export { MessageService } from "../ui/molecules/modal/message.service";
 export { HttpFacade } from "./httpFacade";

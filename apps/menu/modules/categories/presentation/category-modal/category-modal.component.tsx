@@ -1,3 +1,4 @@
+import { MessageService } from "@/core";
 import { Button, InputText, Modal, Text } from "@/ui";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { useService } from "react-service-locator";
@@ -5,6 +6,7 @@ import { CategoryService } from "../../useCases/category.service";
 import styles from "./styles.module.scss";
 
 export const CategoryModal = () => {
+  const messageService = useService(MessageService);
   const categoryService = useService(CategoryService);
   const [name, setName] = useState<string>();
 
@@ -19,6 +21,7 @@ export const CategoryModal = () => {
   const onSubmit: MouseEventHandler<HTMLButtonElement> = () => {
     if (name) {
       categoryService.add(name);
+      messageService.closeModal();
     }
   };
 

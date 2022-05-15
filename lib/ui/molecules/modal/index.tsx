@@ -5,27 +5,30 @@ import { useService } from "react-service-locator";
 import { Icon } from "../..";
 import styles from "./styles.module.scss";
 
+enum Status {
+  open,
+  close,
+}
+
 export const Modal = (props: any) => {
   const modalButtonRef = useRef() as RefObject<HTMLButtonElement> | undefined;
-  const [messages, setMessages] = useState<string[]>([]);
+  const [state, setState] = useState<string>();
   const messageService = useService(MessageService);
 
   useEffect(() => {
-    const subscription = messageService.onMessage().subscribe((message) => {
-      if (message && message === "open") {
-        setMessages((messages) => [...messages, message]);
+    messageService.state$.subscribe((message: any) => {
+      if (message) {
+        setState(message);
       }
     });
-
-    return subscription.unsubscribe;
   }, [messageService]);
 
   useEffect(() => {
-    if (messages.length && modalButtonRef) {
+    if (state?.length && state in Status && modalButtonRef) {
       modalButtonRef.current!.click();
-      setMessages([]);
+      setState(undefined);
     }
-  }, [messages]);
+  }, [state]);
 
   return (
     <DialogPrimitive.Root>

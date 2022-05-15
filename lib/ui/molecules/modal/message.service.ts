@@ -4,11 +4,17 @@ import { Subject } from "rxjs";
 @Service()
 export class MessageService {
   public state$ = new Subject();
-  public openModal = (message: string) => {
+
+  openModal = () => {
+    this.sendMessage("open");
+  };
+
+  closeModal = () => {
+    this.sendMessage("close");
+  };
+
+  private sendMessage = (message: string) => {
     this.state$.next(message);
   };
   public clearMessages = () => this.state$.next("");
-  public onMessage = () => {
-    return this.state$.asObservable();
-  };
 }

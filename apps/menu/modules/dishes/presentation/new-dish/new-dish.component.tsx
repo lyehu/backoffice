@@ -68,7 +68,7 @@ export const NewDishForm = () => {
   };
 
   const toggleModal = () => {
-    // messageService.sendMessage("open");
+    messageService.openModal();
   };
 
   const getCategories = async () => {

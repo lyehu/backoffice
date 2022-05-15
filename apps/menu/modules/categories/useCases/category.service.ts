@@ -1,4 +1,6 @@
+import { Option } from "@/ui";
 import { Service } from "react-service-locator";
+import { Category } from "../domain/category";
 import { CreateCategoryHttpFacade } from "../infrastructure/createCategory.httpFacade";
 import { GetCategoriesHttpFacade } from "../infrastructure/getCategories.httpFacade";
 
@@ -20,7 +22,12 @@ export class CategoryService {
     }
   }
 
-  async getAll(): Promise<any[]> {
+  private async getAll(): Promise<Category[]> {
     return this.getCategoriesFacade.execute();
+  }
+
+  async getOptions(): Promise<Option[]> {
+    const categories = await this.getAll();
+    return categories.map((category) => category.toOption());
   }
 }

@@ -18,7 +18,7 @@ export const CategoryModal = () => {
     }
   };
 
-  const onSubmit: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleSubmit: MouseEventHandler<HTMLButtonElement> = () => {
     if (name) {
       categoryService.add(name);
       messageService.closeModal();
@@ -42,7 +42,7 @@ export const CategoryModal = () => {
       <Button
         variant={Button.Variant.Contained}
         color={Button.Color.Primary}
-        onClick={onSubmit}
+        onClick={handleSubmit}
       >
         Crear categoría
       </Button>

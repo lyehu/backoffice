@@ -61,7 +61,7 @@ export const NewDishForm = () => {
     },
   };
 
-  const handleCategory = (value: string) => {
+  const handleCategoryChange = (value: string) => {
     setDish((dish) => ({ ...dish, category: value }));
     toggleModal();
     getCategories();
@@ -72,8 +72,7 @@ export const NewDishForm = () => {
   };
 
   const getCategories = async () => {
-    const result = await categoryService.getAll();
-    const options = result.map((category) => category.toOption());
+    const options = await categoryService.getOptions();
     setCategoryOptions(options);
   };
 
@@ -121,7 +120,7 @@ export const NewDishForm = () => {
               <RadioGroup
                 name="string"
                 options={categoryOptions}
-                onChange={handleCategory}
+                onChange={handleCategoryChange}
                 addOptionButton={{
                   label: "Nueva categoría",
                   onClick: toggleModal,

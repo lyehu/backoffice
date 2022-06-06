@@ -1,5 +1,9 @@
 @import "~styles/breakpoints.scss";
 
+.trigger {
+  display: none;
+}
+
 .overlay {
   background: rgba(55, 55, 57, 0.5);
   position: fixed;

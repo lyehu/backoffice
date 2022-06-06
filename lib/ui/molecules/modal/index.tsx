@@ -32,7 +32,10 @@ export const Modal = (props: any) => {
 
   return (
     <DialogPrimitive.Root>
-      <DialogPrimitive.Trigger ref={modalButtonRef} />
+      <DialogPrimitive.Trigger
+        className={styles.trigger}
+        ref={modalButtonRef}
+      />
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className={styles.overlay}>
           <DialogPrimitive.Content className={styles.content} {...props}>

@@ -1,47 +1,14 @@
-import {
-  Button,
-  FormGroup,
-  FormNavigationBar,
-  InputText,
-  MessageService,
-  Option,
-  RadioGroup,
-  Text,
-} from "@/ui";
-import { CategoryService } from "apps/menu/modules/dishes/useCases/category.service";
-import { Ref, useEffect, useRef, useState } from "react";
+import { Button, FormGroup, FormNavigationBar, InputText, Text } from "@/ui";
 import { useService } from "react-service-locator";
 import { DishService } from "../../useCases/dish.service";
 import { NewDishService } from "../../useCases/newDish.service";
+import { Categories } from "../categories/categories.component";
 import { CategoryModal } from "./category-modal/category-modal.component";
 import styles from "./styles.module.scss";
 
 export const NewDishForm = () => {
-  const messageService = useService(MessageService);
   const dishService = useService(DishService);
-  const categoryService = useService(CategoryService);
   const newDishService = useService(NewDishService);
-  const [categoryOptions, setCategoryOptions] = useState<Option[]>([]);
-  const radioGroupRef: Ref<any> = useRef();
-
-  useEffect(() => {
-    categoryService.loadCategories();
-    addCategoriesListener();
-    addCategorySelectionListener();
-  }, []);
-
-  const addCategoriesListener = () => {
-    categoryService.entities$.subscribe((categories) => {
-      const options = categories.map((category) => category.toOption());
-      setCategoryOptions(options);
-    });
-  };
-
-  const addCategorySelectionListener = () => {
-    newDishService.state$.subscribe(({ dish }) => {
-      radioGroupRef.current && radioGroupRef.current.updateValue(dish.category);
-    });
-  };
 
   const submitDish = () => {
     const { dish } = newDishService.state$.getValue();
@@ -63,14 +30,6 @@ export const NewDishForm = () => {
     },
   };
 
-  const handleCategoryChange = (value: string) => {
-    newDishService.addCategory(value);
-  };
-
-  const toggleModal = () => {
-    messageService.openModal();
-  };
-
   return (
     <>
       <div className={styles.containerWithSections}>
@@ -87,7 +46,7 @@ export const NewDishForm = () => {
               <InputText
                 name="name"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  newDishService.addName(event.target.value)
+                  newDishService.updateName(event.target.value)
                 }
               />
             </FormGroup>
@@ -96,15 +55,15 @@ export const NewDishForm = () => {
                 <InputText
                   name="number"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    newDishService.addNumber(event.target.value)
+                    newDishService.updateNumber(event.target.value)
                   }
                 />
               </FormGroup>
               <FormGroup className={styles.formGroup} label="Precio base">
                 <InputText
-                  name="prive"
+                  name="price"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    newDishService.addPrice(event.target.value)
+                    newDishService.updatePrice(event.target.value)
                   }
                 />
               </FormGroup>
@@ -112,16 +71,7 @@ export const NewDishForm = () => {
           </div>
           <div className={styles.section}>
             <FormGroup className={styles.formGroup} label="Categoría">
-              <RadioGroup
-                ref={radioGroupRef}
-                name="string"
-                options={categoryOptions}
-                onChange={handleCategoryChange}
-                addOptionButton={{
-                  label: "Nueva categoría",
-                  onClick: toggleModal,
-                }}
-              />
+              <Categories />
             </FormGroup>
           </div>
         </div>

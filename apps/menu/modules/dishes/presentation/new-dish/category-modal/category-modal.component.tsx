@@ -24,7 +24,7 @@ export const CategoryModal = () => {
       const newCategoryId = await categoryService.add(name);
 
       if (newCategoryId.length) {
-        newDishService.addCategory(newCategoryId);
+        newDishService.updateCategory(newCategoryId);
         messageService.closeModal();
       }
     }

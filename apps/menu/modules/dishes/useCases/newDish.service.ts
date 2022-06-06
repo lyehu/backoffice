@@ -16,7 +16,7 @@ export class NewDishService {
     new NewDishService();
   }
 
-  addCategory = (category: string) => {
+  updateCategory = (category: string) => {
     const currentState = this.state$.getValue();
     this.state$.next({
       ...currentState,
@@ -24,7 +24,7 @@ export class NewDishService {
     });
   };
 
-  addName = (name: string) => {
+  updateName = (name: string) => {
     const currentState = this.state$.getValue();
     this.state$.next({
       ...currentState,
@@ -32,7 +32,7 @@ export class NewDishService {
     });
   };
 
-  addNumber = (number: string) => {
+  updateNumber = (number: string) => {
     const currentState = this.state$.getValue();
     this.state$.next({
       ...currentState,
@@ -40,7 +40,7 @@ export class NewDishService {
     });
   };
 
-  addPrice = (price: string) => {
+  updatePrice = (price: string) => {
     const currentState = this.state$.getValue();
     this.state$.next({
       ...currentState,

@@ -1,7 +1,7 @@
 import { Button, InputText, MessageService, Modal, Text } from "@/ui";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { useService } from "react-service-locator";
-import { CategoryService } from "../../useCases/category.service";
+import { CategoryService } from "../../../useCases/category.service";
 import styles from "./styles.module.scss";
 
 export const CategoryModal = () => {

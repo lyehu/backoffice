@@ -8,12 +8,12 @@ import {
   RadioGroup,
   Text,
 } from "@/ui";
-import { CategoryModal } from "apps/menu/modules/categories/presentation/category-modal/category-modal.component";
-import { CategoryService } from "apps/menu/modules/categories/useCases/category.service";
+import { CategoryService } from "apps/menu/modules/dishes/useCases/category.service";
 import { useEffect, useState } from "react";
 import { useService } from "react-service-locator";
 import { DishProps } from "../../domain/dish.dto";
 import { DishService } from "../../useCases/dish.service";
+import { CategoryModal } from "./category-modal/category-modal.component";
 import styles from "./styles.module.scss";
 
 export const NewDishForm = () => {

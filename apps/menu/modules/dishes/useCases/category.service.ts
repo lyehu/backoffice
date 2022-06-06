@@ -1,7 +1,7 @@
 import { StatefulService } from "@/core";
 import { Service } from "react-service-locator";
+import { CreateCategoryHttpFacade } from "../../dishes/infrastructure/createCategory.httpFacade";
 import { Category } from "../domain/category";
-import { CreateCategoryHttpFacade } from "../infrastructure/createCategory.httpFacade";
 import { GetCategoriesHttpFacade } from "../infrastructure/getCategories.httpFacade";
 
 @Service()

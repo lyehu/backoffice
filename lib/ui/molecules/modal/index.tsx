@@ -1,4 +1,4 @@
-import { MessageService } from "@/core";
+import { MessageService } from "@/ui";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React, { RefObject, useEffect, useRef, useState } from "react";
 import { useService } from "react-service-locator";

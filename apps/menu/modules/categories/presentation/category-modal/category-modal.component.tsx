@@ -1,5 +1,4 @@
-import { MessageService } from "@/core";
-import { Button, InputText, Modal, Text } from "@/ui";
+import { Button, InputText, MessageService, Modal, Text } from "@/ui";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { useService } from "react-service-locator";
 import { CategoryService } from "../../useCases/category.service";

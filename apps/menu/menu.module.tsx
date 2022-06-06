@@ -1,4 +1,4 @@
-import { MessageService } from "@/core";
+import { MessageService } from "@/ui";
 import { ServiceContainer } from "react-service-locator";
 import { CreateCategoryHttpFacade } from "./modules/categories/infrastructure/createCategory.httpFacade";
 import { GetCategoriesHttpFacade } from "./modules/categories/infrastructure/getCategories.httpFacade";

@@ -1,9 +1,9 @@
-import { MessageService } from "@/core";
 import {
   Button,
   FormGroup,
   FormNavigationBar,
   InputText,
+  MessageService,
   Option,
   RadioGroup,
   Text,

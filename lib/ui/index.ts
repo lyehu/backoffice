@@ -6,6 +6,7 @@ import { Text } from "./atoms/text";
 import { FormGroup } from "./molecules/form-group";
 import { FormNavigationBar } from "./molecules/form-navigation-bar";
 import { Modal } from "./molecules/modal";
+import { MessageService } from "./molecules/modal/message.service";
 import type { Option } from "./molecules/radio-group";
 import { RadioGroup } from "./molecules/radio-group";
 
@@ -14,6 +15,7 @@ export {
   Text,
   FormGroup,
   FormNavigationBar,
+  MessageService,
   Modal,
   InputText,
   RadioGroup,

@@ -17,9 +17,9 @@ export const CategoryModal = () => {
     }
   };
 
-  const handleSubmit: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
     if (name) {
-      categoryService.add(name);
+      const result = await categoryService.add(name);
       messageService.closeModal();
     }
   };

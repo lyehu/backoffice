@@ -31,7 +31,8 @@ export class FirebaseService implements BaseHttpService {
 
   async post<T>(url: string, data: any): Promise<any> {
     const ref = collection(FirebaseService.db, url);
-    return await addDoc(ref, data);
+    const result = await addDoc(ref, data);
+    return result.id;
   }
 
   async patch<T>(url: string, data: any): Promise<any> {}

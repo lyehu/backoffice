@@ -7,7 +7,7 @@ export interface DishProps {
   ingredients: string;
   name: string;
   number: string;
-  price: number;
+  price: string;
 }
 
 export class DishDTO {
@@ -27,7 +27,7 @@ export class DishDTO {
       ingredients,
       name,
       number,
-      price
+      price.toString()
     );
   };
 

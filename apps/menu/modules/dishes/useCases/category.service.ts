@@ -18,8 +18,12 @@ export class CategoryService extends StatefulService<Category> {
       const categories = await this.getAll();
       const position = categories.length;
 
-      this.createCategoryFacade.execute({ name, position });
+      const id = await this.createCategoryFacade.execute({
+        name,
+        position,
+      });
       this.loadCategories();
+      return id;
     } catch (e) {
       console.log(e);
     }

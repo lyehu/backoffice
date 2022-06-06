@@ -11,8 +11,8 @@ import {
 import { CategoryService } from "apps/menu/modules/dishes/useCases/category.service";
 import { useEffect, useState } from "react";
 import { useService } from "react-service-locator";
-import { DishProps } from "../../domain/dish.dto";
 import { DishService } from "../../useCases/dish.service";
+import { NewDishService } from "../../useCases/newDish.service";
 import { CategoryModal } from "./category-modal/category-modal.component";
 import styles from "./styles.module.scss";
 
@@ -20,16 +20,8 @@ export const NewDishForm = () => {
   const messageService = useService(MessageService);
   const dishService = useService(DishService);
   const categoryService = useService(CategoryService);
+  const newDishService = useService(NewDishService);
   const [categoryOptions, setCategoryOptions] = useState<Option[]>([]);
-  const [dish, setDish] = useState<DishProps>({
-    allergens: "",
-    category: "",
-    imageUrl: "",
-    ingredients: "",
-    name: "",
-    number: "",
-    price: 0,
-  });
 
   useEffect(() => {
     categoryService.loadCategories();
@@ -39,15 +31,9 @@ export const NewDishForm = () => {
     });
   }, []);
 
-  const onInputChange = (
-    name: string,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setDish((dish) => ({ ...dish, [name]: event.target.value }));
-  };
-
   const submitDish = () => {
-    dishService.add(dish);
+    const { dish } = newDishService.state$.getValue();
+    dishService.add(dish.getData());
   };
 
   const buttons = {
@@ -66,7 +52,7 @@ export const NewDishForm = () => {
   };
 
   const handleCategoryChange = (value: string) => {
-    setDish((dish) => ({ ...dish, category: value }));
+    newDishService.addCategory(value);
   };
 
   const toggleModal = () => {
@@ -89,7 +75,7 @@ export const NewDishForm = () => {
               <InputText
                 name="name"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  onInputChange("name", event)
+                  newDishService.addName(event.target.value)
                 }
               />
             </FormGroup>
@@ -98,7 +84,7 @@ export const NewDishForm = () => {
                 <InputText
                   name="number"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    onInputChange("number", event)
+                    newDishService.addNumber(event.target.value)
                   }
                 />
               </FormGroup>
@@ -106,7 +92,7 @@ export const NewDishForm = () => {
                 <InputText
                   name="prive"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    onInputChange("prive", event)
+                    newDishService.addPrice(event.target.value)
                   }
                 />
               </FormGroup>

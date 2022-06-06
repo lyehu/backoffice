@@ -6,7 +6,7 @@ export class Dish {
     public readonly ingredients: string,
     public readonly name: string,
     public readonly number: string,
-    public readonly price: number
+    public readonly price: string
   ) {}
 
   static create = (
@@ -16,7 +16,7 @@ export class Dish {
     ingredients: string,
     name: string,
     number: string,
-    price: number
+    price: string
   ) => {
     return new Dish(
       allergens,
@@ -30,6 +30,66 @@ export class Dish {
   };
 
   static empty = () => {
-    return new Dish("", "", "", "", "", "", 0);
+    return new Dish("", "", "", "", "", "", "");
+  };
+
+  getData = () => {
+    return {
+      allergens: this.allergens,
+      category: this.category,
+      imageUrl: this.imageUrl,
+      ingredients: this.ingredients,
+      name: this.name,
+      number: this.number,
+      price: this.price,
+    };
+  };
+
+  setCategory = (category: string) => {
+    return new Dish(
+      this.allergens,
+      category,
+      this.imageUrl,
+      this.ingredients,
+      this.name,
+      this.number,
+      this.price
+    );
+  };
+
+  setName = (name: string) => {
+    return new Dish(
+      this.allergens,
+      this.category,
+      this.imageUrl,
+      this.ingredients,
+      name,
+      this.number,
+      this.price
+    );
+  };
+
+  setNumber = (number: string) => {
+    return new Dish(
+      this.allergens,
+      this.category,
+      this.imageUrl,
+      this.ingredients,
+      this.name,
+      number,
+      this.price
+    );
+  };
+
+  setPrice = (price: string) => {
+    return new Dish(
+      this.allergens,
+      this.category,
+      this.imageUrl,
+      this.ingredients,
+      this.name,
+      this.number,
+      price
+    );
   };
 }

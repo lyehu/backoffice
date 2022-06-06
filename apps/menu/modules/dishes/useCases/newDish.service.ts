@@ -1,24 +1,50 @@
 import { Service } from "react-service-locator";
+import { BehaviorSubject, distinctUntilChanged, Observable, pluck } from "rxjs";
+import { Dish } from "../domain/dish";
 
 @Service()
 export class NewDishService {
-  constructor(
-    private readonly name: string,
-    private readonly number: number,
-    private readonly price: number
-  ) {}
+  state$ = new BehaviorSubject({ dish: Dish.empty() });
+  public dish$: Observable<Dish> = this.state$.pipe(
+    pluck("dish"),
+    distinctUntilChanged()
+  );
 
-  getDish = () => {
-    return {
-      name: this.name,
-      number: this.number,
-      price: this.number,
-    };
+  constructor() {}
+
+  static create() {
+    new NewDishService();
+  }
+
+  addCategory = (category: string) => {
+    const currentState = this.state$.getValue();
+    this.state$.next({
+      ...currentState,
+      dish: currentState.dish.setCategory(category),
+    });
   };
 
-  create = (name: string, number: number, price: number) => {
-    return new NewDishService(name, number, price);
+  addName = (name: string) => {
+    const currentState = this.state$.getValue();
+    this.state$.next({
+      ...currentState,
+      dish: currentState.dish.setName(name),
+    });
   };
 
-  addCategory = (category: string) => {};
+  addNumber = (number: string) => {
+    const currentState = this.state$.getValue();
+    this.state$.next({
+      ...currentState,
+      dish: currentState.dish.setNumber(number),
+    });
+  };
+
+  addPrice = (price: string) => {
+    const currentState = this.state$.getValue();
+    this.state$.next({
+      ...currentState,
+      dish: currentState.dish.setPrice(price),
+    });
+  };
 }

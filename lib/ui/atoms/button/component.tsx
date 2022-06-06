@@ -28,12 +28,14 @@ interface HtmlButtonProps extends BaseButtonProps {
   target?: never;
   href?: never;
   onClick: MouseEventHandler<HTMLButtonElement>;
+  type?: "submit" | "reset" | "button";
 }
 
 interface ButtonLinkProps extends BaseButtonProps {
   target?: "_blank" | "_self";
   href: string;
   onClick?: never;
+  type?: never;
 }
 
 export type ButtonProps = ButtonLinkProps | HtmlButtonProps;
@@ -48,6 +50,7 @@ export const Button = (props: ButtonProps) => {
     children,
     href,
     onClick,
+    type,
   } = props;
   const classNameMap = classNames(
     styles.button,
@@ -72,6 +75,7 @@ export const Button = (props: ButtonProps) => {
       className={classNameMap}
       disabled={disabled}
       onClick={onClick}
+      type={type}
     >
       {children}
     </ButtonComponent>

@@ -5,6 +5,7 @@ type ButtonProps = {
   children: ReactNode;
   disabled?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  type?: "submit" | "reset" | "button";
 };
 
 export const ButtonComponent = ({ children, ...others }: ButtonProps) => (

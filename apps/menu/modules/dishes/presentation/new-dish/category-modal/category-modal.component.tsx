@@ -45,6 +45,7 @@ export const CategoryModal = () => {
         onChange={onChange}
       ></InputText>
       <Button
+        type="submit"
         variant={Button.Variant.Contained}
         color={Button.Color.Primary}
         onClick={handleSubmit}

@@ -1,4 +1,4 @@
-import { Dish } from "./dish";
+import { Dish } from "../dish";
 
 export interface DishProps {
   allergens: string;
@@ -7,17 +7,19 @@ export interface DishProps {
   ingredients: string;
   name: string;
   number: string;
+  position: number;
   price: string;
 }
 
 export class DishDTO {
-  static fromJSON = ({
+  static fromDb = ({
     allergens,
     category,
     imageUrl,
     ingredients,
     name,
     number,
+    position,
     price,
   }: DishProps): Dish => {
     return Dish.create(
@@ -27,16 +29,18 @@ export class DishDTO {
       ingredients,
       name,
       number,
+      position,
       price.toString()
     );
   };
 
-  static toJSON = (dish: Dish): any => {
+  static toDb = (dish: Dish): any => {
     return {
       allergens: dish.allergens,
       imageUrl: dish.imageUrl,
       ingredients: dish.ingredients,
       name: dish.name,
+      position: dish.position,
       price: dish.price,
     };
   };

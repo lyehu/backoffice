@@ -2,7 +2,7 @@ import { HttpFacade } from "@/core";
 import { BaseHttpService } from "@/infrastructure";
 import { Service } from "react-service-locator";
 import { Category } from "../domain/category";
-import { CategoryCreateDTO } from "../domain/category.dto";
+import { CategoryCreateDTO } from "../domain/dto/category.dto";
 
 @Service()
 export class CreateCategoryHttpFacade implements HttpFacade<Category, string> {

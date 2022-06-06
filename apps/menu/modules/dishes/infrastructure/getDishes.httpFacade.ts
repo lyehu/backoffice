@@ -1,17 +1,20 @@
 import { HttpFacade } from "@/core";
 import { BaseHttpService } from "@/infrastructure";
 import { Service } from "react-service-locator";
-import { DishDTO } from "../domain/dish.dto";
+import { Dish } from "../domain/dish";
+import { DishDTO } from "../domain/dto/dish.dto";
+import { GetDishesDTO } from "../domain/dto/getDishes.dto";
 
 @Service()
-export class GetDishesHttpFacade implements HttpFacade<void, DishDTO[]> {
+export class GetDishesHttpFacade implements HttpFacade<GetDishesDTO, Dish[]> {
   constructor(private readonly httpService: BaseHttpService) {}
 
-  async execute(): Promise<DishDTO[]> {
+  async execute(request: GetDishesDTO): Promise<Dish[]> {
     try {
-      return await this.httpService.get(
-        `restaurants/8zSuQV3YmUJrfTsnzlri/categories/XN8PUKjEYNK94OsPXQHr/dishes`
+      const dishes: any[] = await this.httpService.get(
+        `restaurants/8zSuQV3YmUJrfTsnzlri/categories/${request.categoryId}/dishes`
       );
+      return dishes.map(DishDTO.fromDb);
     } catch (e) {}
 
     return [];

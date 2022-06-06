@@ -1,4 +1,4 @@
-import { Category } from "./category";
+import { Category } from "../category";
 
 export interface CategoryDbProps {
   id: string;
@@ -13,7 +13,7 @@ export interface CategoryCreateDTO {
 }
 
 export class CategoryDTO {
-  static fromJSON = ({
+  static fromDb = ({
     id,
     name,
     name_english,
@@ -27,7 +27,7 @@ export class CategoryDTO {
     });
   };
 
-  static toJSON = (category: Category): CategoryDbProps => {
+  static toDb = (category: Category): CategoryDbProps => {
     return {
       id: category.id,
       name: category.name,

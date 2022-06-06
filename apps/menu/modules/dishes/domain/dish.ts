@@ -6,6 +6,7 @@ export class Dish {
     public readonly ingredients: string,
     public readonly name: string,
     public readonly number: string,
+    public readonly position: number,
     public readonly price: string
   ) {}
 
@@ -16,6 +17,7 @@ export class Dish {
     ingredients: string,
     name: string,
     number: string,
+    position: number,
     price: string
   ) => {
     return new Dish(
@@ -25,12 +27,13 @@ export class Dish {
       ingredients,
       name,
       number,
+      position,
       price
     );
   };
 
   static empty = () => {
-    return new Dish("", "", "", "", "", "", "");
+    return new Dish("", "", "", "", "", "", 0, "");
   };
 
   getData = () => {
@@ -41,6 +44,7 @@ export class Dish {
       ingredients: this.ingredients,
       name: this.name,
       number: this.number,
+      position: this.position,
       price: this.price,
     };
   };
@@ -53,6 +57,7 @@ export class Dish {
       this.ingredients,
       this.name,
       this.number,
+      this.position,
       this.price
     );
   };
@@ -65,6 +70,7 @@ export class Dish {
       this.ingredients,
       name,
       this.number,
+      this.position,
       this.price
     );
   };
@@ -77,6 +83,20 @@ export class Dish {
       this.ingredients,
       this.name,
       number,
+      this.position,
+      this.price
+    );
+  };
+
+  setPosition = (position: number) => {
+    return new Dish(
+      this.allergens,
+      this.category,
+      this.imageUrl,
+      this.ingredients,
+      this.name,
+      this.number,
+      position,
       this.price
     );
   };
@@ -89,6 +109,7 @@ export class Dish {
       this.ingredients,
       this.name,
       this.number,
+      this.position,
       price
     );
   };

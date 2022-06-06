@@ -1,8 +1,8 @@
 import { BaseHttpService } from "@/infrastructure";
 import { HttpFacade } from "lib/core";
 import { Service } from "react-service-locator";
-import { CategoryDbProps, CategoryDTO } from "../../dishes/domain/category.dto";
 import { Category } from "../domain/category";
+import { CategoryDbProps, CategoryDTO } from "../domain/dto/category.dto";
 
 @Service()
 export class GetCategoriesHttpFacade implements HttpFacade<void, Category[]> {
@@ -13,7 +13,7 @@ export class GetCategoriesHttpFacade implements HttpFacade<void, Category[]> {
       const categories: CategoryDbProps[] = await this.httpService.get(
         `/restaurants/8zSuQV3YmUJrfTsnzlri/categories`
       );
-      return categories.map(CategoryDTO.fromJSON);
+      return categories.map(CategoryDTO.fromDb);
     } catch (e) {}
     return [];
   }

@@ -2,7 +2,7 @@ import { HttpFacade } from "@/core";
 import { BaseHttpService } from "@/infrastructure";
 import { Service } from "react-service-locator";
 import { Dish } from "../domain/dish";
-import { DishDTO } from "../domain/dish.dto";
+import { DishDTO } from "../domain/dto/dish.dto";
 
 @Service()
 export class CreateDishHttpFacade implements HttpFacade<Dish, string> {
@@ -12,7 +12,7 @@ export class CreateDishHttpFacade implements HttpFacade<Dish, string> {
     try {
       return await this.httpService.post(
         `/restaurants/8zSuQV3YmUJrfTsnzlri/categories/${data.category}/dishes`,
-        DishDTO.toJSON(data)
+        DishDTO.toDb(data)
       );
     } catch (e) {}
   }

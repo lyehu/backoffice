@@ -33,7 +33,7 @@ export const NewDishForm = () => {
 
   const submitDish = () => {
     const { dish } = newDishService.state$.getValue();
-    dishService.add(dish.getData());
+    dishService.add(dish);
   };
 
   const buttons = {

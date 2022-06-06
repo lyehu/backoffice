@@ -1,6 +1,6 @@
 import { Service } from "react-service-locator";
 import { Dish } from "../domain/dish";
-import { DishProps } from "../domain/dish.dto";
+import { GetDishesDTO } from "../domain/dto/getDishes.dto";
 import { CreateDishHttpFacade } from "../infrastructure/createDish.httpFacade";
 import { GetDishesHttpFacade } from "../infrastructure/getDishes.httpFacade";
 
@@ -11,32 +11,21 @@ export class DishService {
     private getDishesFacade: GetDishesHttpFacade
   ) {}
 
-  async add({
-    allergens,
-    category,
-    imageUrl,
-    ingredients,
-    name,
-    number,
-    price,
-  }: DishProps) {
+  async add(dish: Dish) {
     try {
-      const dish = Dish.create(
-        allergens,
-        category,
-        imageUrl,
-        ingredients,
-        name,
-        number,
-        price
-      );
+      const filters = {
+        categoryId: dish.category,
+      };
+      const dishes = await this.getDishes(filters);
+      const position = dishes.length;
+      dish.setPosition(position);
       this.createDishFacade.execute(dish);
     } catch (e) {
       console.log(e);
     }
   }
 
-  async getAll(): Promise<any[]> {
-    return this.getDishesFacade.execute();
+  async getDishes(filters: GetDishesDTO): Promise<Dish[]> {
+    return this.getDishesFacade.execute(filters);
   }
 }

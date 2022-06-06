@@ -1,15 +1,17 @@
-import { Option } from "@/ui";
+import { StatefulService } from "@/core";
 import { Service } from "react-service-locator";
 import { Category } from "../domain/category";
 import { CreateCategoryHttpFacade } from "../infrastructure/createCategory.httpFacade";
 import { GetCategoriesHttpFacade } from "../infrastructure/getCategories.httpFacade";
 
 @Service()
-export class CategoryService {
+export class CategoryService extends StatefulService<Category> {
   constructor(
     private createCategoryFacade: CreateCategoryHttpFacade,
     private getCategoriesFacade: GetCategoriesHttpFacade
-  ) {}
+  ) {
+    super();
+  }
 
   async add(name: string) {
     try {
@@ -17,6 +19,7 @@ export class CategoryService {
       const position = categories.length;
 
       this.createCategoryFacade.execute({ name, position });
+      this.loadCategories();
     } catch (e) {
       console.log(e);
     }
@@ -26,8 +29,8 @@ export class CategoryService {
     return await this.getCategoriesFacade.execute();
   }
 
-  async getOptions(): Promise<Option[]> {
+  async loadCategories(): Promise<void> {
     const categories = await this.getAll();
-    return categories.map((category) => category.toOption());
+    this.setEntities(categories);
   }
 }

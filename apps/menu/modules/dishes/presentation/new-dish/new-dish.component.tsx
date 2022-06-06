@@ -32,7 +32,11 @@ export const NewDishForm = () => {
   });
 
   useEffect(() => {
-    getCategories();
+    categoryService.loadCategories();
+    categoryService.entities$.subscribe((categories) => {
+      const options = categories.map((category) => category.toOption());
+      setCategoryOptions(options);
+    });
   }, []);
 
   const onInputChange = (
@@ -64,16 +68,10 @@ export const NewDishForm = () => {
   const handleCategoryChange = (value: string) => {
     setDish((dish) => ({ ...dish, category: value }));
     toggleModal();
-    getCategories();
   };
 
   const toggleModal = () => {
     messageService.openModal();
-  };
-
-  const getCategories = async () => {
-    const options = await categoryService.getOptions();
-    setCategoryOptions(options);
   };
 
   return (

@@ -52,7 +52,6 @@ export class StatefulService<T> {
       return { ...acc, [val.id]: val };
     }, {});
     this.state$.next({ ...currentState, entities });
-    console.log(this.state$.getValue());
   }
 
   public addEntity(entity: T) {

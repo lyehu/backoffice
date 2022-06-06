@@ -23,7 +23,7 @@ export class CategoryService {
   }
 
   private async getAll(): Promise<Category[]> {
-    return this.getCategoriesFacade.execute();
+    return await this.getCategoriesFacade.execute();
   }
 
   async getOptions(): Promise<Option[]> {

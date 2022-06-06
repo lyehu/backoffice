@@ -1,15 +1,12 @@
 import { HttpFacade } from "@/core";
-import { CustomHttpService } from "@/infrastructure";
+import { BaseHttpService } from "@/infrastructure";
 import { Service } from "react-service-locator";
-import { FIREBASE_CONFIG } from "../../../../config";
 import { Dish } from "../domain/dish";
 import { DishDTO } from "../domain/dish.dto";
 
 @Service()
 export class CreateDishHttpFacade implements HttpFacade<Dish, string> {
-  constructor(private readonly httpService: CustomHttpService) {
-    httpService.init(FIREBASE_CONFIG);
-  }
+  constructor(private readonly httpService: BaseHttpService) {}
 
   async execute(data: Dish): Promise<any> {
     try {

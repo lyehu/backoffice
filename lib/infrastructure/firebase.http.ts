@@ -1,4 +1,5 @@
-import { FirebaseOptions, initializeApp } from "firebase/app";
+import { FIREBASE_CONFIG } from "apps/config";
+import { initializeApp } from "firebase/app";
 import {
   addDoc,
   collection,
@@ -7,15 +8,14 @@ import {
   getFirestore,
 } from "firebase/firestore";
 import { Service } from "react-service-locator";
-import { CustomHttpService } from "./http";
+import { BaseHttpService } from "./http";
 
 @Service()
-export class FirebaseService implements CustomHttpService {
-  constructor() {}
+export class FirebaseService implements BaseHttpService {
   private static db: Firestore;
 
-  init(config: FirebaseOptions) {
-    const app = initializeApp(config);
+  constructor() {
+    const app = initializeApp(FIREBASE_CONFIG);
     FirebaseService.db = getFirestore(app);
   }
 

@@ -1,15 +1,12 @@
-import { CustomHttpService } from "@/infrastructure";
+import { BaseHttpService } from "@/infrastructure";
 import { HttpFacade } from "lib/core";
 import { Service } from "react-service-locator";
-import { FIREBASE_CONFIG } from "../../../../config";
 import { Category } from "../domain/category";
 import { CategoryDbProps, CategoryDTO } from "../domain/category.dto";
 
 @Service()
 export class GetCategoriesHttpFacade implements HttpFacade<void, Category[]> {
-  constructor(private readonly httpService: CustomHttpService) {
-    httpService.init(FIREBASE_CONFIG);
-  }
+  constructor(private readonly httpService: BaseHttpService) {}
 
   async execute(): Promise<Category[]> {
     try {

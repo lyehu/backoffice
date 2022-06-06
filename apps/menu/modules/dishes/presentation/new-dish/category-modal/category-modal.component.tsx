@@ -2,11 +2,13 @@ import { Button, InputText, MessageService, Modal, Text } from "@/ui";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { useService } from "react-service-locator";
 import { CategoryService } from "../../../useCases/category.service";
+import { NewDishService } from "../../../useCases/newDish.service";
 import styles from "./styles.module.scss";
 
 export const CategoryModal = () => {
   const messageService = useService(MessageService);
   const categoryService = useService(CategoryService);
+  const newDishService = useService(NewDishService);
   const [name, setName] = useState<string>();
 
   const onChange: ChangeEventHandler<HTMLInputElement> = ({
@@ -19,8 +21,12 @@ export const CategoryModal = () => {
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
     if (name) {
-      const result = await categoryService.add(name);
-      messageService.closeModal();
+      const newCategoryId = await categoryService.add(name);
+
+      if (newCategoryId.length) {
+        newDishService.addCategory(newCategoryId);
+        messageService.closeModal();
+      }
     }
   };
 

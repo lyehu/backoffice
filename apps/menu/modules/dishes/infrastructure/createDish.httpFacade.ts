@@ -11,7 +11,7 @@ export class CreateDishHttpFacade implements HttpFacade<Dish, string> {
   async execute(data: Dish): Promise<any> {
     try {
       return await this.httpService.post(
-        `/restaurants/8zSuQV3YmUJrfTsnzlri/categories/XN8PUKjEYNK94OsPXQHr/dishes`,
+        `/restaurants/8zSuQV3YmUJrfTsnzlri/categories/${data.category}/dishes`,
         DishDTO.toJSON(data)
       );
     } catch (e) {}

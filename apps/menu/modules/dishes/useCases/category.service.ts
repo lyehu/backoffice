@@ -13,7 +13,7 @@ export class CategoryService extends StatefulService<Category> {
     super();
   }
 
-  async add(name: string) {
+  async add(name: string): Promise<string> {
     try {
       const categories = await this.getAll();
       const position = categories.length;
@@ -27,6 +27,8 @@ export class CategoryService extends StatefulService<Category> {
     } catch (e) {
       console.log(e);
     }
+
+    return "";
   }
 
   private async getAll(): Promise<Category[]> {

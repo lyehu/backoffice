@@ -1,4 +1,9 @@
-import { ChangeEventHandler, useState } from "react";
+import {
+  ChangeEventHandler,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from "react";
 import { IPillRadio, Pill } from "../../atoms/pill";
 import styles from "./styles.module.scss";
 
@@ -19,9 +24,15 @@ interface RadioGroupProps {
   };
 }
 
-export const RadioGroup = (props: RadioGroupProps) => {
+export const RadioGroup = forwardRef((props: RadioGroupProps, ref) => {
   const { name, options, onChange, defaultValue, addOptionButton } = props;
   const [checked, setChecked] = useState(defaultValue);
+
+  useImperativeHandle(ref, () => ({
+    updateValue(value: string) {
+      setChecked(value);
+    },
+  }));
 
   const onValueChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const {
@@ -54,4 +65,6 @@ export const RadioGroup = (props: RadioGroupProps) => {
       {addOptionButton && <Pill {...button} />}
     </div>
   );
-};
+});
+
+RadioGroup.displayName = "RadioGroup";

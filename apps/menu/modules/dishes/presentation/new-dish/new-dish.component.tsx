@@ -67,7 +67,6 @@ export const NewDishForm = () => {
 
   const handleCategoryChange = (value: string) => {
     setDish((dish) => ({ ...dish, category: value }));
-    toggleModal();
   };
 
   const toggleModal = () => {

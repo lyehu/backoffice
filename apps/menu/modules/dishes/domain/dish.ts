@@ -7,7 +7,7 @@ export class Dish {
     public readonly name: string,
     public readonly number: string,
     public readonly position: number,
-    public readonly price: string
+    public readonly price: number
   ) {}
 
   static create = (
@@ -18,7 +18,7 @@ export class Dish {
     name: string,
     number: string,
     position: number,
-    price: string
+    price: string | number
   ) => {
     return new Dish(
       allergens,
@@ -28,25 +28,21 @@ export class Dish {
       name,
       number,
       position,
-      price
+      Dish.parsePrice(price)
     );
   };
 
-  static empty = () => {
-    return new Dish("", "", "", "", "", "", 0, "");
+  static parsePrice = (price: string | number) => {
+    if (typeof price === "number") {
+      return price;
+    }
+
+    const pointedPrice = price.replace(",", ".");
+    return parseInt(pointedPrice);
   };
 
-  getData = () => {
-    return {
-      allergens: this.allergens,
-      category: this.category,
-      imageUrl: this.imageUrl,
-      ingredients: this.ingredients,
-      name: this.name,
-      number: this.number,
-      position: this.position,
-      price: this.price,
-    };
+  static empty = () => {
+    return new Dish("", "", "", "", "", "", 0, 0);
   };
 
   setCategory = (category: string) => {
@@ -110,7 +106,7 @@ export class Dish {
       this.name,
       this.number,
       this.position,
-      price
+      Dish.parsePrice(price)
     );
   };
 }

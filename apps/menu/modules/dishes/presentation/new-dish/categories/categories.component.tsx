@@ -1,8 +1,8 @@
 import { MessageService, Option, RadioGroup } from "@/ui";
 import { Ref, useEffect, useRef, useState } from "react";
 import { useService } from "react-service-locator";
-import { CategoryService } from "../../useCases/category.service";
-import { NewDishService } from "../../useCases/newDish.service";
+import { CategoryService } from "../../../useCases/category.service";
+import { NewDishService } from "../../../useCases/newDish.service";
 
 export const Categories = () => {
   const messageService = useService(MessageService);

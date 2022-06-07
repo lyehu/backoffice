@@ -1,8 +1,15 @@
-import { Button, FormGroup, FormNavigationBar, InputText, Text } from "@/ui";
+import {
+  Button,
+  FormGroup,
+  FormNavigationBar,
+  InputText,
+  Text,
+  Toast,
+} from "@/ui";
 import { useService } from "react-service-locator";
 import { DishService } from "../../useCases/dish.service";
 import { NewDishService } from "../../useCases/newDish.service";
-import { Categories } from "../categories/categories.component";
+import { Categories } from "./categories/categories.component";
 import { CategoryModal } from "./category-modal/category-modal.component";
 import styles from "./styles.module.scss";
 
@@ -78,6 +85,7 @@ export const NewDishForm = () => {
       </div>
       <FormNavigationBar buttons={buttons} className={styles.footer} />
       <CategoryModal />
+      <Toast />
     </>
   );
 };

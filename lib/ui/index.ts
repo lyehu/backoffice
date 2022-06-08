@@ -9,7 +9,7 @@ import { Modal } from "./molecules/modal";
 import { MessageService } from "./molecules/modal/message.service";
 import type { Option } from "./molecules/radio-group";
 import { RadioGroup } from "./molecules/radio-group";
-import { Toast } from "./molecules/toast";
+import { RadixNotificationService, Toast } from "./molecules/toast";
 
 export {
   Button,
@@ -22,6 +22,7 @@ export {
   RadioGroup,
   Option,
   Toast,
+  RadixNotificationService,
   Icon,
   Pill,
 };

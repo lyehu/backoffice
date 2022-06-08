@@ -1,3 +1,4 @@
+import { RadixNotificationService } from "@/ui";
 import { Service } from "react-service-locator";
 import { Dish } from "../domain/dish";
 import { GetDishesDTO } from "../domain/dto/getDishes.dto";
@@ -8,7 +9,8 @@ import { GetDishesHttpFacade } from "../infrastructure/getDishes.httpFacade";
 export class DishService {
   constructor(
     private createDishFacade: CreateDishHttpFacade,
-    private getDishesFacade: GetDishesHttpFacade
+    private getDishesFacade: GetDishesHttpFacade,
+    private notificationService: RadixNotificationService
   ) {}
 
   async add(dish: Dish) {
@@ -20,8 +22,12 @@ export class DishService {
       const position = dishes.length;
       dish.setPosition(position);
       this.createDishFacade.execute(dish);
+      this.notificationService.success("¡Enhorabuena!", "Plato nuevo creado");
     } catch (e) {
-      console.log(e);
+      this.notificationService.error(
+        "¡Vaya!",
+        "Parece que algo no ha funcionado"
+      );
     }
   }
 

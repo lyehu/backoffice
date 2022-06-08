@@ -85,7 +85,10 @@ export const NewDishForm = () => {
       </div>
       <FormNavigationBar buttons={buttons} className={styles.footer} />
       <CategoryModal />
-      <Toast />
+      <Toast
+        title="¡Enhorabuena!"
+        description="Tu plato se ha creado correctamente."
+      />
     </>
   );
 };

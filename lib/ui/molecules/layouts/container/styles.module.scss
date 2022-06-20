@@ -6,6 +6,11 @@
   padding: var(--spacing__vertical-3) var(--spacing__vertical-2);
 
   @media (min-width: $breakpoint-laptop) {
-    padding: var(--spacing__vertical-5) var(--spacing__vertical-11);
+    padding: var(--spacing__vertical-4) var(--spacing__vertical-11);
+  }
+
+  @media (min-width: $breakpoint-large-screen) {
+    padding-top: var(--spacing__vertical-5);
+    padding-bottom: var(--spacing__vertical-5);
   }
 }

@@ -1,0 +1,21 @@
+@import "~styles/breakpoints.scss";
+
+.card {
+  align-items: center;
+  background: var(--color__grey-lightest);
+  display: flex;
+  padding: var(--spacing__vertical-1) var(--spacing__vertical-2);
+
+  @media (min-width: $breakpoint-laptop) {
+    border-radius: var(--border-radius__small);
+    padding: var(--spacing__vertical-2) var(--spacing__vertical-5)
+  }
+}
+
+.image {
+  background: grey;
+  border-radius: 100%;
+  height: 60px;
+  margin-right: var(--spacing__vertical-2);
+  width: 60px;
+}

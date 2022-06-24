@@ -3,7 +3,10 @@ import * as RadixToast from "@radix-ui/react-toast";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useService } from "react-service-locator";
-import { RadixNotificationService } from "./radix-notifications.service";
+import {
+  NotificationProps,
+  RadixNotificationService,
+} from "./radix-notifications.service";
 import styles from "./styles.module.scss";
 
 interface ToastData {

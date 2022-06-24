@@ -1,5 +1,8 @@
 import { Button, EmptyState } from "@/ui";
 import { MenuModule } from "apps/menu/menu.module";
+import { useEffect, useState } from "react";
+import { useService } from "react-service-locator";
+import { DishService } from "../../useCases/dish.service";
 
 const emptyDishes = {
   image: {
@@ -18,8 +21,17 @@ const emptyDishes = {
   },
 };
 
-export const DishesList = () => (
-  <MenuModule>
-    <EmptyState {...emptyDishes} />
-  </MenuModule>
-);
+export const DishesList = () => {
+  const [dishes, setDishes] = useState([]);
+  const dishesService = useService(DishService);
+
+  useEffect(() => {
+    initDishes();
+  });
+
+  const initDishes = () => {};
+
+  return (
+    <MenuModule>{!dishes.length && <EmptyState {...emptyDishes} />}</MenuModule>
+  );
+};

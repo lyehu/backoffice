@@ -2,8 +2,10 @@ import { Service } from "react-service-locator";
 import { Subject } from "rxjs";
 import { CustomNotificationService } from "./notifications.service";
 
+export type Types = "default" | "error" | "info" | "success" | "warning";
+
 export interface NotificationProps {
-  type: "default" | "error" | "info" | "success" | "warning";
+  type: Types;
   title: string;
   description: string;
 }

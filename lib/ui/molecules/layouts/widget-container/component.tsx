@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 import { Text } from "../../../atoms/text/component";
+import { Toast } from "../../toast";
 import styles from "./styles.module.scss";
 
 export interface Props {
@@ -18,6 +19,7 @@ export const WidgetContainerLayout = (props: Props) => {
           {title}
         </Text>
       </header>
+      <Toast />
       {children}
     </div>
   );

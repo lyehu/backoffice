@@ -12,23 +12,23 @@ export interface NotificationProps {
 export class RadixNotificationService implements CustomNotificationService {
   state$ = new Subject<NotificationProps>();
 
-  async default(title: string, description: string): Promise<void> {
+  default(title: string, description: string): void {
     this.state$.next({ type: "default", title, description });
   }
 
-  async error(title: string, description: string): Promise<void> {
+  error(title: string, description: string): void {
     this.state$.next({ type: "error", title, description });
   }
 
-  async info(title: string, description: string): Promise<void> {
+  info(title: string, description: string): void {
     this.state$.next({ type: "info", title, description });
   }
 
-  async success(title: string, description: string): Promise<void> {
+  success(title: string, description: string): void {
     this.state$.next({ type: "success", title, description });
   }
 
-  async warning(title: string, description: string): Promise<void> {
+  warning(title: string, description: string): void {
     this.state$.next({ type: "warning", title, description });
   }
 }

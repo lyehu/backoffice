@@ -9,11 +9,9 @@ export class CreateDishHttpFacade implements HttpFacade<Dish, string> {
   constructor(private readonly httpService: BaseHttpService) {}
 
   async execute(data: Dish): Promise<any> {
-    try {
-      return await this.httpService.post(
-        `/restaurants/8zSuQV3YmUJrfTsnzlri/categories/${data.category}/dishes`,
-        DishDTO.toDb(data)
-      );
-    } catch (e) {}
+    return await this.httpService.post(
+      `/restaurants/8zSuQV3YmUJrfTsnzlri/categories/${data.category}/dishes`,
+      DishDTO.toDb(data)
+    );
   }
 }

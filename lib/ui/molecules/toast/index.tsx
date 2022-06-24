@@ -3,10 +3,7 @@ import * as RadixToast from "@radix-ui/react-toast";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useService } from "react-service-locator";
-import {
-  NotificationProps,
-  RadixNotificationService,
-} from "./radix-notifications.service";
+import { RadixNotificationService } from "./radix-notifications.service";
 import styles from "./styles.module.scss";
 
 interface ToastData {
@@ -21,10 +18,10 @@ export const Toast = () => {
     description: "",
   });
   const [style, setStyle] = useState(styles["default"]);
-  const notificationService = useService(RadixNotificationService);
+  const notificationsService = useService(RadixNotificationService);
 
   useEffect(() => {
-    notificationService.state$.subscribe((message: NotificationProps) => {
+    notificationsService.state$.subscribe((message: NotificationProps) => {
       if (message) {
         setOpen(true);
         setStyle(styles[message.type]);
@@ -34,15 +31,11 @@ export const Toast = () => {
         });
       }
     });
-  }, [notificationService]);
+  }, [notificationsService]);
 
   return (
     <RadixToast.Provider>
-      <RadixToast.Root
-        type="foreground"
-        className={classNames(styles.root, style)}
-        open={open}
-      >
+      <RadixToast.Root className={classNames(styles.root, style)} open={open}>
         <RadixToast.Title>{content.title}</RadixToast.Title>
         <RadixToast.Description>{content.description}</RadixToast.Description>
       </RadixToast.Root>

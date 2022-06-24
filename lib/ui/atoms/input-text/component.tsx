@@ -14,7 +14,7 @@ export interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
 export const InputText = ({
   size = Sizes.Medium,
   className,
-  onChange,
+  ...other
 }: InputTextProps) => {
   const classNameMap = classNames(
     styles.input,
@@ -24,7 +24,7 @@ export const InputText = ({
     className
   );
 
-  return <input className={classNameMap} type="text" onChange={onChange} />;
+  return <input className={classNameMap} type="text" {...other} />;
 };
 
 InputText.Sizes = Sizes;

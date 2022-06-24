@@ -18,6 +18,7 @@ interface RadioGroupProps {
   options: Option[];
   onChange: (value: string) => void;
   defaultValue?: string;
+  required?: boolean;
   addOptionButton: {
     label: string;
     onClick: () => void;
@@ -25,7 +26,8 @@ interface RadioGroupProps {
 }
 
 export const RadioGroup = forwardRef((props: RadioGroupProps, ref) => {
-  const { name, options, onChange, defaultValue, addOptionButton } = props;
+  const { name, options, onChange, defaultValue, addOptionButton, required } =
+    props;
   const [checked, setChecked] = useState(defaultValue);
 
   useImperativeHandle(ref, () => ({
@@ -49,6 +51,7 @@ export const RadioGroup = forwardRef((props: RadioGroupProps, ref) => {
       selected: isSelectedValue,
       onChange: onValueChange,
       name: name,
+      required: required,
     };
   });
 

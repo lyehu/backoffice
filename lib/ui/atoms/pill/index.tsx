@@ -10,6 +10,7 @@ export type IPillRadio = {
   onChange: ChangeEventHandler<HTMLInputElement>;
   selected: boolean;
   value: string;
+  required?: boolean;
 };
 
 export type IPillButton = {
@@ -21,6 +22,7 @@ export type IPillButton = {
   onChange?: never;
   selected?: never;
   value?: never;
+  required?: never;
 };
 
 export type IPill = { className?: string } & (IPillRadio | IPillButton);
@@ -43,6 +45,7 @@ export const Pill = (pill: IPill) => {
         value={pill.value}
         checked={pill.selected}
         onChange={pill.onChange}
+        required={pill.required}
       />
       <label
         htmlFor={pill.id}

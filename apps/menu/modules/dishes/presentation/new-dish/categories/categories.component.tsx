@@ -43,6 +43,7 @@ export const Categories = () => {
 
   return (
     <RadioGroup
+      required
       ref={radioGroupRef}
       name="string"
       options={categoryOptions}

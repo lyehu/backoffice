@@ -48,6 +48,7 @@ export const NewDishForm = () => {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   newDishService.updateName(event.target.value)
                 }
+                required
               />
             </FormGroup>
             <div className={styles.row}>
@@ -57,6 +58,7 @@ export const NewDishForm = () => {
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     newDishService.updateNumber(event.target.value)
                   }
+                  required
                 />
               </FormGroup>
               <FormGroup className={styles.formGroup} label="Precio base">
@@ -65,6 +67,7 @@ export const NewDishForm = () => {
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     newDishService.updatePrice(event.target.value)
                   }
+                  required
                 />
               </FormGroup>
             </div>
